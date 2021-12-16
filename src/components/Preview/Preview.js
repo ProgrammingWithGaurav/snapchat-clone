@@ -4,7 +4,7 @@ import './Preview.css';
 function Preview() {
     return (
         <div>
-            
+            <img src="" alt="user-logo" />
         </div>
     )
 }
