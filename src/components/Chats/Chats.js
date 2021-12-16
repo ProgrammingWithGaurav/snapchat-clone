@@ -6,18 +6,19 @@ import './Chats.css';
 // Icons
 import SearchIcon from '@material-ui/icons/Search';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import Chat from '../Chat/Chat';
 
 function Chats() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        db.collection('snapchat_chats')
+        db.collection('snapchat_posts')
             .orderBy('timestamp', 'desc')
             .onSnapshot(snapshot => setPosts(snapshot.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data(),
             }))))
-    }, [])
+        }, [])
     return (
         <div>
             <div className="chats-header">
@@ -31,7 +32,7 @@ function Chats() {
 
             <div className="chats-posts">
                 {posts.map(({ id, data: { profilePic, username, timestamp, imageUrl, read } }) => {
-                    <Chat
+                    return (<Chat
                         key={id}
                         id={id}
                         username={username}
@@ -39,6 +40,7 @@ function Chats() {
                         imageUrl={imageUrl}
                         read={read}
                         profilePic={profilePic} />
+                    )
                 })}
             </div>
         </div>
