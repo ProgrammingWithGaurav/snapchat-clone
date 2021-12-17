@@ -1,15 +1,19 @@
 import { Avatar } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { db } from '../../firebase';
+import { auth, db } from '../../firebase';
 import './Chats.css';
 
 // Icons
 import SearchIcon from '@material-ui/icons/Search';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import Chat from '../Chat/Chat';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/appSlice';
+import RadioButtonUnCheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 function Chats() {
     const [posts, setPosts] = useState([]);
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         db.collection('snapchat_posts')
@@ -22,7 +26,7 @@ function Chats() {
     return (
         <div>
             <div className="chats-header">
-                <Avatar className='chats-avatar' />
+                <Avatar className='chats-avatar' src={user.profilePic} onClick={() => auth.signOut()} />
                 <div className="chats-search">
                     <SearchIcon />
                     <input type="text" placeholder='Friends' />

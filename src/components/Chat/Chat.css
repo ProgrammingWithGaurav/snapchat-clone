@@ -3,8 +3,16 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px;
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid rgb(226, 226, 226);
     cursor: pointer;
+}
+
+.chat:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.chat:hover {
+    background-color: rgb(240, 240, 240);
 }
 
 .chat-avatar {
@@ -21,11 +29,11 @@
     flex: 1;
 }
 
-.chat-info > h4 {
+.chat-info>h4 {
     font-size: 11px;
     font-weight: 500;
 }
 
-.chat-info > p {
+.chat-info>p {
     font-size: 9px;
 }
