@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import WebcamCapture from './components/WebcamCapture/WebcamCapture';
 import Preview from './components/Preview/Preview';
 import Chats from './components/Chats/Chats';
@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import Login from './components/Login/Login';
 import { useSelector } from 'react-redux';
 import { auth } from './firebase';
+
 
 function App() {
   const user = useSelector(selectUser);
@@ -35,7 +36,7 @@ function App() {
           <Login />
         ) : (
           <>
-            <img className='app-logo' src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Snapchat--Logo.png" alt="snapchat logo" />
+            <Link to="/chats"><img className='app-logo' src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Snapchat--Logo.png" alt="snapchat logo" /></Link>
             <div className="app-body">
               <div className="app-bodyBackground">
                 <Routes>

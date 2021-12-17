@@ -75,11 +75,17 @@
     color: gray;
     font-size: 40px !important;
     cursor: pointer;
-    bottom: 0;
+    bottom: 20px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .chats-takePicIcon:hover {
     opacity: 0.8;
+}
+
+svg.MuiSvgIcon-root.chats-takePicIcon  {
+    position: absolute;
+    bottom: 43px;
+
 }

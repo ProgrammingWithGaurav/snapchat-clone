@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { selectSelectedImage } from '../../features/appSlice';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import './ChatView.css';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 function ChatView() {
     const navigate = useNavigate();
     const selectedImage = useSelector(selectSelectedImage);
-    console.log(selectedImage);
     useEffect(() => {
         if (!selectedImage) {
             exit();

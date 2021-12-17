@@ -4,7 +4,9 @@
     align-items: center;
     justify-content: center;
     background-color: #fefc01;
-    height: 100vh;
+    height: auto;
+    overflow-y: scroll;
+    position: relative;
 }
 
 .app-body {
@@ -13,6 +15,8 @@
     width: 250px;
     padding: 74px;
     background-size: contain;
+    height: auto;
+    margin: 40px;
 }
 
 .app-logo {

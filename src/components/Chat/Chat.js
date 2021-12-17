@@ -12,8 +12,8 @@ function Chat({ id, username, timestamp, read, imageUrl, profilePic }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const open = () => {
+        dispatch(selectImage(imageUrl));
         if (!read) {
-            dispatch(selectImage(imageUrl));
             db.collection('snapchat_posts').doc(id).update({
                 read: true,
             })
