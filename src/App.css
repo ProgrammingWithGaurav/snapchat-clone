@@ -6,3 +6,20 @@
     background-color: #fefc01;
     height: 100vh;
 }
+
+.app-body {
+    background: url('https://www.pngkey.com/png/full/859-8598072_picture-freeuse-library-silhouette-mobile-at-get-drawings-cell.png') no-repeat center;
+    height: 400px;
+    width: 250px;
+    padding: 74px;
+    background-size: contain;
+}
+
+.app-logo {
+    width: 100px;
+}
+
+.app-bodyBackground {
+    background-color: white;
+    height: 400px;
+}

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { db, storage } from '../../firebase';
+import {selectUser} from '../../features/appSlice';
 import firebase from 'firebase';
 
 // icons
@@ -18,10 +19,12 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import CropIcon from '@material-ui/icons/Crop';
 import TimerIcon from '@material-ui/icons/Timer';
 import SendIcon from '@material-ui/icons/Send';
+
 function Preview() {
     const cameraImage = useSelector(selectCameraImage);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         if (!cameraImage) {
@@ -45,9 +48,9 @@ function Preview() {
                 .then((url) => {
                     db.collection('snapchat_posts').add({
                         imageUrl: url,
-                        username: 'Gaurav',
+                        username: user.displayName,
                         read: false,
-                        // profilePicture
+                        profilePic: user.profilePic,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     })
                     navigate('/chats');

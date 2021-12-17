@@ -17,12 +17,12 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      if(authUser){
+      if (authUser) {
         dispatch(login({
           username: authUser.displayName,
           profilePic: authUser.photoURL,
           id: authUser.uid,
-        })) 
+        }))
       } else {
         dispatch(logout())
       }
@@ -34,14 +34,19 @@ function App() {
         {!user ? (
           <Login />
         ) : (
-          <div className="app-body">
-            <Routes>
-              <Route path='/' element={<WebcamCapture />} />
-              <Route path='/preview' element={<Preview />} />
-              <Route path='/chats' element={<Chats />} />
-              <Route path='/chats/view' element={<ChatView />} />
-            </Routes>
-          </div>
+          <>
+            <img className='app-logo' src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Snapchat--Logo.png" alt="snapchat logo" />
+            <div className="app-body">
+              <div className="app-bodyBackground">
+                <Routes>
+                  <Route path='/' element={<WebcamCapture />} />
+                  <Route path='/preview' element={<Preview />} />
+                  <Route path='/chats' element={<Chats />} />
+                  <Route path='/chats/view' element={<ChatView />} />
+                </Routes>
+              </div>
+            </div>
+          </>
         )}
       </Router>
     </div>

@@ -23,6 +23,16 @@
     color: white;
 }
 
+.chats-searchIcon {
+    color: white;
+    font-size: 13px !important;
+}
+
+.chats-chatIcon {
+    color: white;
+    font-size: 18px !important;
+}
+
 .chats-search > input::placeholder {
     color: white;
     opacity: 1;
@@ -56,4 +66,20 @@
 .chats-posts {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.chats-takePicIcon {
+    position: absolute;
+    background-color: white;
+    border-radius: 200px;
+    color: gray;
+    font-size: 40px !important;
+    cursor: pointer;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chats-takePicIcon:hover {
+    opacity: 0.8;
 }

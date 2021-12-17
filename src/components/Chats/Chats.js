@@ -9,11 +9,21 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import Chat from '../Chat/Chat';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../features/appSlice';
+import { resetCameraImage } from '../../features/cameraSlice'
 import RadioButtonUnCheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function Chats() {
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const user = useSelector(selectUser);
+
+    const takeSnap = () => {
+        dispatch(resetCameraImage());
+        navigate('/');
+    }
 
     useEffect(() => {
         db.collection('snapchat_posts')
@@ -22,13 +32,13 @@ function Chats() {
                 id: doc.id,
                 data: doc.data(),
             }))))
-        }, [])
+    }, [])
     return (
         <div>
             <div className="chats-header">
                 <Avatar className='chats-avatar' src={user.profilePic} onClick={() => auth.signOut()} />
                 <div className="chats-search">
-                    <SearchIcon />
+                    <SearchIcon className="chats-searchIcon" />
                     <input type="text" placeholder='Friends' />
                 </div>
                 <ChatBubbleIcon className="chats-chatIcon" />
@@ -47,6 +57,12 @@ function Chats() {
                     )
                 })}
             </div>
+
+            <RadioButtonUnCheckedIcon
+                className="chats-takePicIcon"
+                onClick={takeSnap}
+                fontSize='large'
+            />
         </div>
     )
 }
